@@ -15,6 +15,8 @@ shapes.forEach(shape => {
         inputs.style.display = 'block';
         selectedShapeDisplay.textContent = `Selected Shape: ${currentShape}`;
 
+        input2.style.display = 'none';
+
         if (currentShape === 'triangle') {
             inputLabel.textContent = 'Enter base and height of the triangle:';
             input2.style.display = 'inline';
