@@ -10,31 +10,35 @@ const selectedShapeDisplay = document.getElementById('selectedShape');
 let currentShape = '';
 
 shapes.forEach(shape => {
-    shape.addEventListener('click', function () {
-        currentShape = this.getAttribute('data-shape');
-        inputs.style.display = 'block';
+    shape.addEventListener('click', () => {
+        currentShape = shape.getAttribute('data-shape');
+        inputs.setAttribute('style', 'display: block;'); 
         selectedShapeDisplay.textContent = `Selected Shape: ${currentShape}`;
-
-        input2.style.display = 'none';
-
-        if (currentShape === 'triangle') {
-            inputLabel.textContent = 'Enter base and height of the triangle:';
-            input2.style.display = 'inline';
-        } else if (currentShape === 'circle') {
-            inputLabel.textContent = 'Enter radius of the circle:';
-            input2.style.display = 'none';
-        } else if (currentShape === 'square') {
-            inputLabel.textContent = 'Enter side of the square:';
-            input2.style.display = 'none';
-        }
 
         input1.value = '';
         input2.value = '';
         result.textContent = '';
+
+        input2.setAttribute('style', 'display: none;'); 
+
+        if (currentShape === 'triangle') {
+            inputLabel.textContent = 'Enter base and height of the triangle:';
+            input2.setAttribute('style', 'display: inline;'); 
+            input1.setAttribute('placeholder', 'Enter base');
+            input2.setAttribute('placeholder', 'Enter height');
+        } else if (currentShape === 'circle') {
+            inputLabel.textContent = 'Enter radius of the circle:';
+            input2.setAttribute('style', 'display: none;'); 
+            input1.setAttribute('placeholder', 'Enter radius');
+        } else if (currentShape === 'square') {
+            inputLabel.textContent = 'Enter side of the square:';
+            input2.setAttribute('style', 'display: none;'); 
+            input1.setAttribute('placeholder', 'Enter side');
+        }
     });
 });
 
-calculateBtn.addEventListener('click', function () {
+calculateBtn.addEventListener('click', () => {
     const value1 = parseFloat(input1.value);
     const value2 = parseFloat(input2.value);
     let area = 0;
